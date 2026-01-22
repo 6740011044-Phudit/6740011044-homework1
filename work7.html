@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ร้านค้าออนไลน์ - ระบบตะกร้าสินค้าและชำระเงิน</title>
+    <style>
+
+        .view-section {
+            display: none;
+            padding: 20px 0;
+            border-top: 1px solid #ccc;
+        }
+        .view-section.active {
+            display: block;
+        }
+
+        body { font-family: Arial, sans-serif; }
+        header, footer { text-align: center; padding: 10px; background-color: #f4f4f4; }
+        nav a { margin: 0 10px; cursor: pointer; }
+        article { border: 1px solid #eee; padding: 15px; margin-bottom: 10px; }
+        .product-info { margin-left: 10px; }
+        .cart-item { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding: 10px 0; }
+        .cart-summary { margin-top: 20px; border-top: 2px solid #000; padding-top: 10px; }
+
+        form label { display: block; margin-top: 10px; font-weight: bold; }
+        form input[type="text"], form input[type="email"], form input[type="tel"], form textarea {
+            width: 90%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ร้านค้าออนไลน์ (ONLINE STORE)</h1>
+
+        <nav>
+            <ul>
+                <li><a onclick="showView('product-list-view')">สินค้าทั้งหมด</a></li>
+                <li><a onclick="showView('cart-view')">ตะกร้าสินค้า (<span id="cart-count">0</span>)</a></li>
+                <li><a onclick="showView('contact-view')">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="product-list-view" class="view-section active">
+            <h2>รายการสินค้า</h2>
+            <div id="product-container">
+
+            </div>
+        </section>
+
+        <section id="cart-view" class="view-section">
+            <h2>ตะกร้าสินค้าของคุณ</h2>
+
+            <article id="cart-items-container">
+                <p id="empty-cart-message">ตะกร้าสินค้าว่างเปล่า</p>
+
+            </article>
+
+            <aside class="cart-summary">
+                <h3>สรุปยอดรวม</h3>
+                <p>ยอดรวมสินค้า: <span id="cart-total">0.00</span> บาท</p>
+                <button onclick="showView('checkout-view')" id="checkout-button" disabled>ดำเนินการชำระเงิน</button>
+            </aside>
+        </section>
+
+        <section id="checkout-view" class="view-section">
+            <h2>ดำเนินการชำระเงิน</h2>
+
+            <form id="checkout-form">
+                <fieldset>
+                    <legend>ข้อมูลที่อยู่สำหรับจัดส่ง</legend>
+                    
+                    <label for="name">ชื่อ-นามสกุล:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="tel">เบอร์โทรศัพท์:</label>
+                    <input type="tel" id="tel" name="tel" required>
+
+                    <label for="email">อีเมล:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="address">ที่อยู่จัดส่ง:</label>
+                    <textarea id="address" name="address" rows="4" required></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>สรุปคำสั่งซื้อ</legend>
+                    <div id="checkout-summary-container">
+
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>วิธีการชำระเงิน (จำลอง)</legend>
+                    <p>
+                        <input type="radio" id="payment-cod" name="payment-method" value="cod" checked>
+                        <label for="payment-cod">เก็บเงินปลายทาง (COD)</label>
+                    </p>
+                    <p>
+                        <input type="radio" id="payment-transfer" name="payment-method" value="transfer">
+                        <label for="payment-transfer">โอนเงินผ่านธนาคาร</label>
+                    </p>
+                </fieldset>
+
+                <button type="submit">ยืนยันคำสั่งซื้อและชำระเงิน</button>
+            </form>
+        </section>
+
+        <section id="contact-view" class="view-section">
+            <h2>ติดต่อเรา</h2>
+            <address>
+                <p><strong>ที่ตั้ง:</strong> อาคารสำนักงานใหญ่, ถนนสุขุมวิท, กรุงเทพมหานคร 10110</p>
+                <p><strong>เบอร์โทรศัพท์:</strong> <a href="tel:+6621234567">02-123-4567</a> (ฝ่ายบริการลูกค้า)</p>
+                <p><strong>อีเมล:</strong> <a href="mailto:support@onlinestore.com">support@onlinestore.com</a></p>
+                <p><strong>เวลาทำการ:</strong> จันทร์ - ศุกร์, 9:00 น. - 18:00 น.</p>
+            </address>
+        </section>
+
+        <section id="confirmation-view" class="view-section">
+            <h2>ขอบคุณสำหรับคำสั่งซื้อ!</h2>
+            <p>คำสั่งซื้อของคุณได้รับการยืนยันแล้ว</p>
+            <p>เราจะดำเนินการจัดส่งสินค้าไปยังที่อยู่ของคุณโดยเร็วที่สุด</p>
+            <p>หมายเลขคำสั่งซื้อ: <strong>#<span id="order-number"></span></strong></p>
+            <button onclick="showView('product-list-view')">กลับไปหน้าสินค้า</button>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><small>&copy; 2026 ร้านค้าออนไลน์. สงวนลิขสิทธิ์ทั้งหมด.</small></p>
+        <nav>
+            <a href="/privacy-policy.html">นโยบายความเป็นส่วนตัว</a>
+        </nav>
+    </footer>
+
+    <script>
+
+        const products = [
+            { id: 1, name: 'หูฟังไร้สาย', price: 3500.00, description: 'สัมผัสเสียงที่คมชัดพร้อมเบสที่หนักแน่น', image: 'data:image/jpeg;base64,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' },
+            { id: 2, name: 'นาฬิกาอัจฉริยะ', price: 1850.00, description: 'ตรวจสอบสุขภาพและกิจกรรมของคุณตลอด 24 ชั่วโมง', image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEBUSEhIWFhUWFxgVFxcWFhUaFRcYGhUXFxoVFxUYHSggGholGxYVITMhJSkrLi4xGSAzODMsNygtLisBCgoKDg0OGxAQGi0lIB03LS0uLzcvLi0rLS0tMzA3NS0rNS01LS0tLS0rMC0tLS0tLi0tLS0tLS0uNy0tLTIrK//AABEIAOAA4AMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAAAwQFBgcIAgH/xABPEAACAQIDAwgECQgHBgcAAAABAgMAEQQSIQUGMQcTIkFRYXGRFDKBoSNCUmJysbLB0RUzNFNzksLSFyRDgpOi8Bajs8Ph4gg1RFSDhPH/xAAaAQEBAQEBAQEAAAAAAAAAAAAAAQIDBAUG/8QAKxEBAAIBAgUCBQUBAAAAAAAAAAECEQMSBCExQVETYQUigZGxMlJxodEk/9oADAMBAAIRAxEAPwDcaKKKAooooCiiigKKKKAooooCiiigKKKKAooooCiiigKKKKAooooCiiigKKKKAooooCiiigKKKKAooooCiiqpvFv9hMKSgbnpRpkjIsD85+A8Bc91Ba6KxXavKVjZbiMpCvYgzN7Xb7gKrWO2vPN+dnkfuZ2I/dvag6CxW18PEbSTxIexpEB8iajMRvrs9OOLjP0bv9gGsCFq+hhQbi/KNs0f27Hwhn/kpL+krZ36yT/Bl/lrE2kUC54VHT7QYmyafWaDoKLlF2a2nPMPpQzj35LVO7O2xh5/zM8chteysCw8V4iuXDBKdcwHiTf3V8EM6m6vqNRY8PCg6yornvdrlUx2EYJib4iLgcx+EA7Vfr8Gv7K27drePDY+HnsNJmHBlOjofkuvUfceq9BLUUUUBRRRQFFFFAUUUUBRRRQFFFFAUUV5kkCgliABxJNgPE0HqkcXikiQySOqIouWYgADxNRW0t4FVSIBzj9WjZB3lra+A91Y5vVsDamPmLyzRBAeguc+ZBAF+4aD3kJHfblHkxJMWGLRwcC3CSTx61Xu4nr7KonP1LRcm859fFxL7M38dexyb/K2gnsj/wC80EIcSO2vJxY7R51P/wBHcPXjx7FA/Gj+j7DdeO94H/LoK+cavyh518XGqTYG5OlTeI5PobfB40X7GIIPtCC1JbI3d9FlvIOeJ649So+h1+INAwxuz5snOGwUdV9fKmOHlA4casG9+JLlIo1YKbcQR599/qr7yibnSYCVWGscgurd9hmQ/OB8xr22CF5+voxFRYmr7z9BJu6sLMKb4PHYjBS85h5Xja3rIbXHYRwI7iCKaekUoMQGGU8PqoNS3P5aSHEO0kFjoMRGtrdV5I/rK/u9dbLhsQkiLJGwZGAZWUgqQeBBHEVxziIuI8j39tSe6u8mLw5tFNIgXqDHL4ZToeug64oqt8n+8n5QwSzNbnFJjlA4Zx1gdhBU+23VVkoCiiigKKKKAooooCiiigjt4NtQ4LDPiZ2yxoLntJ6lUdbE6AVz3vPyl7SxVpI4njiYkRnIzIONgpIsz6G57jYCpv8A8Q+2i7x4YHoIbkdr5QSx7bKygd5eqtsneHDRwRAyKCuH5sgDEc5zgmeWzC3NZNfWHSvbW16Csyb145jc4qX977qTO8eM65386s7T7OJP6MdePNyqPRbt8GvR1xYGXp9/rGxNJYtcLLLg4E5po+elOWESXMbCER878bOQlmtroeugrR2/ij/bN7vwrwdtYj9a3uq74/ZmCtFC5gjdZY5pV51lUJJFhjNkLtfXqXjobcKYLsrAksLQ5QQAwxXS5ghr4plzfnxZfgx8q2QcaCrHa8/6w14O1Jv1hq64zd/ACKRwQCIrgLKjFdJbSn4SxLMsY0JuD6qlgBn1A+Ta0w+Oacx7xYhWV0kKuhzKw4gj6x3VEUUG37O2ph9rYcNNGqSgC7IbEOOPD2MPGvu/+9Un5MXCTgSy86tpiBqigsG0GklwEPaCT11Tdk3gw8cqcJHWNh2E2AYd+vkK84iR5pBE59Z1W7cAScoJ7BqKCqtK3ZSRd/k1JTRFGZGWzKSrA8QQbEEdoNeKCPvJ2UEyDW1SN6lt08D6Rj8NCeDyrfvVemw/dVqDSt0eSvDjDxyY0PJKyq5jzFUjuL5OgbsRwNzbuq34fc3Z6ergoPbGrHza5qdJr5eueXpisQQwGBigBEMaRA8RGoS9uF8tr0751vlHzNJ3ovUXBTnm+UfOlExjDjqPfTe9F6uZNsT2TSm4vX2m+Ba6Du0pxXR5pjEiiiiiCiikcY+WN27FY+QJoOV+VnGmXaB1uAof/EJkt7AwHsqJwW5uPmjWWPDko4upLRi47bMwNvZXvf7/AMwlHyRGmvzYkFaBs7AiaeKNvVWGG/0Vhj0HiT761WMvBx/F24esTXHfr7fZm21N1sZh4zJNh2RAQC11IF9BfKTbWoiO9xlve4tbjfqt31qG3ouZhxsd7gRW8byxZT42NJ8i+ylTERY6VC15lw2GXWxkYfCSn5scd9eGZ16xS0Ya4Hiba9JtbH0/iGaSuzMSxJYm5JJJJ7yeuvFS+M2jJDtCSeJssizu6mwNjnJBswIPtFXLffebEnZeHw+KcSz4oDFu3NxLzcFyIUXm1Fy1i5J4DKOusvazaiiigKKkcPsl2F9fAC9vG5GvcL0zxEBQ2PsNBsG5WzxNgIlIv8KD4WhlP3VC724HIZCuhykjxtVv5PRlwcP0mY+yCT+aq/v1KFWQnqQj2kWHvNBdd7+SdcZM+LgxHNNKOcaNo8ys5UHosGBTMeNw2pv3VhZNtCCCNCCdQRxB0rsOOyRjMQAqi5OgAA1JPUK5S34lg/KWJbDuDC8hkU2sOn0mtfqzFrd1BF4eNndY0XM7sEUdrMQAPMitx3W5PYdnypiWmeSVQV4KIwWUglVtm7eJrPuTjApFiExuJsqKCYVOhkciwcD5IBJv2lTw1rTsXvphCLO3Xf1vw/Gszns66e2Odll9JWj0gVTTv1gR2eZ/mryeUDBfN9/81Z22dvU0/ddPSRR6SKpP9IWC7F9/81H9IWC7F/1/epiyerp+66+krR6StUv+kDBfN9/81ehv1gT2eZ/mqbbHqafuveB2hYlRrwPnp91TET5gCOusyw2+eEBJRwL6G5Nvv7atG7O9WHmYxCQB+IBIvbrPhw1GmvfWq57uepsnnVaKKKK24imW22thZz2RSH/Iae1GbyvbCS965f3iF++g5P37mzbRxP7VvuH3VpEEaGdFSR0kyotwqlbiIX1vwsOysp3klzYzEN2yv9o1et0N8jPKkUyxx5U1mC3c2so07SSK6acx3fI+L6OpekWpGcZz/X85et5TH6DimWR3ciO+ZbcZ4yTe5vwqB3H3/wAVs+SJedkbCoxZoFKgNe9xcjtN687zb3GeJ8OsEaDNZnXi4RrjS2lyAeukcLt3CrFkOHTMsTBSYISed5qEIzMdWAkWc630dbg8Bm8xM8nf4bo30tKYvGJmc9umI8GO2Nqx4mMySB2xjzM8kpYZGjygKuUcGBHG1L787bTGYoTRoyRiGGNFcAG0cYTSxta4NSqbZwFy6xqj5ntaID+0PMkFdFCx6N8q4vci4itu4qGWFRHKLxO6qpV8zx5YkRgcuXURliCRqT21l9BXqWwYBkW/aP8A8pGvqtY3HEa0Gw7gbIwU+ExbYuQRLGIskuaxQsJCSB8a5A0sSerWs33iC5tDfXQ2tfiL26rgLpScW0VtqbHsIJt4W6u6meIxHOMOy/XxN7a/V5UG77mJbCRC39nKfJUX+Kq3vSmZ2XtsvmQPvq3brx2wkf7GT3vD+FVbaC5sZGvyp4V85kFBue3MAMRhZ8OdBLFJET2Z0K399ct7s7LDl5pkzJBoV06cvARm/UCLm+nqg6E11lWD8oGxxgMHicosZJsRIB2c9PkQ/wCDp7KkrDL9oY3EzytKz6toLHRVvoqjqHvPE6k0ybCSni1/FjUxgSlirWGZQAxv0DoQdOrqpwqpzpEhTLlIuh6N8uhXtIOviKZ54bmnyb8q76BJ3edfPQH7vOrVzEBAGYXAsSGtdgSC12+L16C9rV89Fw/XIRw+MhI1OpA437BqOJ7BXNVvye/d50fk9+7zqxmKMva4AyKbc4vrXGYc5a2gJOg1tSjwwqhswLW7Qdcjai3abaHXSgrH5Pfu86PQH7vOpWigjBg5BwPvpzhnxMbrIkhV0OZWDag9xp1RQdIcl+935QwatIAsydGRRwuLdIfNIIPdqOqrnXP3IvjGR8w6sQIWA61e+Un6JMn71dA1FkVE70/ora/Gi/4yGpaq/vvNlwvG12HuDP8Aw1Uci7Re80h7XY+bGm1ena5J7Tep1pcIxN7AFi56LAi+mUWHDi1u+ggKKsGw8bHBiGZZMqNhsQjatZmbDyAIdNQZMlr/ADSdatMu0MLK2zGaWFeaZXlRmVkjS2FjWMAAWBZJXKm5XMxPHUM2oqe32nR8a7IytdIcxVkfpiCMPeRAFkbOGu6gBjcga012bh4mQFyLhmuC1iVyrYexj9fZQRdFT2EwKjFRCPJIedtkkK82xsrAasLg3tYsLnS9XTC7vwPjcXeNADHEIvg42RCREs8zQhwq5GJzAEhMzWvYGgy2lMOOmviPrpOl8CLyoPnr9YoOgcFi1hweZzZUgUn+9Lb+EVUNjbTXEYuOaNHZI5kkOgGYI4Y5bnuqQ39OXZMg7Y8KP9/Mf4RUPuTClgoIusY0B4kkHUewmg3rd/eODGZ+aJDIbMrWv4ggkEd9Zpy9H+rSfSh+1J+FP+To5cawHWCPdUfy9foz/Sh+1LRWW7GwaSiQOzArBNKmVVILRQvLZyT0QQltAePVVhwm6kMiJJz5EYi5zEOXWyPzcTc0FKXQ5pR0jnFgT3VS8NtAKLhypKlDa4OVlKsptxBUkEdYNPk3lmXJbFSjmwVTpv0AQAQvYLADwAHVRFjwm68ZVs7SrJDI6TL8GfzceJkbIBqB/V8okbRixsNNUZ9jYVOeztiAI/R7MOaOb0hUkVObyjM6xmQmzC/N9V6ghvLNZR6VLZGzr8I/RbU5hrx6TfvN2mkn265bMZ3Lc5ztyzX5wAASX+UAAL9woLOd24CZVWSTnFRCsLNGJBJzUsskTsEKsyCNDlGU9IjiKf4bcNZZ4hFK7wNnzSJzchOVwiOnN3AWQsCA2qhXve1VCTeids+bFSnOuR7u/SXpdFu0dJv3j2mmzbZYukhmfPGAsbZmzIF4BD8UDXQdtA/xuBVMPh5QXzS86HV1C5HjZAVABJIux1NjpwHCo+kztBSqoZOil8q62XNa+UdV7Dyrz6Wnyh76BaikfS0+UPfXz0xPlfXQaXyGrfn/ANsp/wArVv8AWAchLXE57ZVP+Vq3+ooqqcpL2wd78C58sPN/0q11R+VzEZcA4v8AElbyTL/HVRy/s3DCR7HgBc/hVgXY6lcwiGWxN9Orj13qI2COk3gPrq1RZ+ZuCuXK2lulxIPibX17KCBjwERUEpxAPE9njXr8mRfJ97fjTrDkhBa/AcL9lK5m7T76CP8AyXF2HzNeTsmPv86kczd9OlH9XdiBfnEAOUXAyuSOHcPKpM4arXcgjsePtbzH4V8/IyfKb3fhUvOjIxVgLg2Ogrxn7h5CrE5SYmJxKKOxl+UfdTfD4MpiYlOoLqQe3pCrHPEFSNtOmCbW4Wcr91MFW+Kw4+f+FSJyWrMTiWk8oWGeTZTrGpJVsPm71VJHP2xVD3Q2iEkjLuVsrIfG2l616W3NS/TUa92Fi/mqB5P8Ij7WRSilQkzWKgjQAXt/eqon+S6Ey4h5x6ii2bqLHqHfUXy9fo0n0oftS1sMUSqAqqFA4AAAD2Cse5ev0aT6UP2paisAq17NnD7HxaFYwUmwuVsiCQ5ziCxaS2ZhoosTYWGnG9Uoqo2/FosuISWeNlZfSvRcIz4Z1kZIEaKXDsIrFSSQuYOCyra+q0z2Tg2jxOKUnNh3zNMXGGbJK+DEjR45wAREjMwBQAZg1ulpWOUrhoGkdURSzOwVVHEsTYAd5JoNR2lJKmCDQ5QoGzhs8gR3Mr4criQhtcsXL583Xa/VTrA43ETbRkWIrJHg44osRMsSPNMY3ZpI4VOnw0pdezIikmw1z19z8YM3wSkKue4liIYWkNoyGtIwEUt1W56DUnht1MZIiusJ6TBApZFkJMgivzbEMF5xlXNawJtegvsMrHZ0ofDnDxR+kSuFeHmXcYof1KRCnOI5XoLZgbWNiL2W3i9DebDyYmVFYNicRGk8IjtEREcNhJVw+c82HMhuRcqrgAAqTlu09nSYeTm5QA1lYWZWVlZQysrqSrKQQbg00oNP3hkQYvbcQ5hl5ppVZY1zhziMKuRZCoYAAv0VNtTx0tmFFFBsXIN6s37RfsNXQNc+chTWjnPY6nyjY1tmG2yGmERW2ZnVbX+Lm1PiENTMRLUVmYzHZL1mnLfLbCHvgmHnJhh+NaXWVcvU4GDZb65UH78n/ZVZYPsHi/gPvqyLh/gWcObZbler12Fjrw6N+HE1XtiLYyW+b2d/ZUwFXmpCT0gBl148b6f64UCUY6I8Pur0R/q4qW2fu9LLCsiFelcKtzmJEsMVuwXaZevqNI7OwtpWWReEUzWYdkT2OvHXUHuqTLnbUiImfBnPAyMVYWYcRcaU6UH0Y98y/Yb7zTvb2BkbFtZCeddhHYEl8pyHKBxsQRX1tmSLCqlbkusxy3No2hjcMdNLB1v2XrneeUO3C33Rme8G224nEzsQbMzZT2gMV+sGo/Xvq247Z4mW2ga5ytqbZp8UzaX6wgqs7MW80XfIg6vlLV05+SHK2vF76nmsz+ZK4++SD9lfzkk+6mGCW+Oww+cfqqy7awuaMsq3YMtrakL/AFh20HVYAnwqv7GF9pYYd5+o00pzV1vfdafbH4hsu0VyxOe12PlHGn8NRHJcl9qk/JglPm8Q/GpLakt8OTw6c4/dlKfw025Ilvj5z2QAecg/lroy1usb5ev0aT6UP2pa2Ssb5ev0aT6UP2paKwCiiiiCnWy8a0E8U6gFopEkUHgSjBgD3XFNaKC6pv0qqEjw2VIweZBlzFHYYkMznJ8IL4pzlGX1V1Ot/GC33WIJbDFmjIVWkmLfBDFJi8jdEXfnE9fs0ynjVNooJXeXbHpc/PZCvQjTpNmdsiBM8jhVDMbcQo6tKiqKKAooooNb5FP0fFeP/KetN3VLCaEMPiEeBCn+Uis35ClvHOO11HmjCtuw2xgsokLXszMBa2rZr3N9dGNc7VzaJd6XiKTE90rWN/8AiAPwLD5uH/4mI/6VslZRy/4cnCK3xSGUn56lXQfu88fZXRwYZsEaP4j76kZvVPgfqqB2djObJuLg8e3xqRk2pGVI11BHCguuxd4jBDGnMFhG2bMCRe2IhnPxdPzQHtvXrFbxq0QUwEHIEz3HDmDF2cCSWtVYw+8qImQdhF7NfUk+65r1id5I3TITbv6Xbfs7amHK2jSc5jquOE3yiW14nNmzfF/9xLNbj2Oo9hpou8kQLdB9YRCNF0Iiw8d+PD4F/MVTl2lF8v3EfdUou8UVwb31c2LD4zZiNVuBwFvHtqTSJa06V0/0pldvRdjcOwcf6ye3tmTyNPMVtnAsUsrKI3zoAmUAmTC3Nl09SKX2kVUMbtKORywZRe2hYdQA+6lMDtGFb5irXK6XS2hubk6j79fYisQ5zw9Mzb93VZcLtuBVa7G5jkUdFvWbDyxjq+VJUBusmbauHHYCfrpRtpYfIRZb2bWyaXvbW/eNfm6caS3PxaripMUfVhjNu9uIt7dPbStYrGIdYrETM+Wn7SnHo5t8qY/vTyN9RFL8jYvisW3ZHCPN5T91Z7h9sscIitxI93Ae61alyJYUjCTTkfnZiFPasahPt84K000asb5ev0aT6UP2pa2Ssb5ev0aT6UP2paisAop7szAGVuNlHE/cO+rAmzYQLZB7dT5mqipUVObV2QApePS2pXu7RUNDEWYKouWIAHaToBQjm8UVouyN04Y1BlUSP13vlHcF6/E0vj918NIpAQRt1MmlvFeBrzTxVM4far8C4mabuWfHf/GZ0U62lgWglaJ+Knj1EdRHcRWk8kfJeu0F9LxZYYYEqiKbNKQbMS3UgOmmpN+FtfRE55vj2rNZms9YZZRXWb7hbF0w5wmHDFbhb2mK8Mwa+f23rGeVvkzGzbYnDFmwztlKtq0THgC3Wh1sTw4G9xVZSvIN6s37RPsNXQNc/cg3qzftE+w1dA1FFQG/O7o2hgZcNezEZo2+TIuqnw4g9xNT9FVHFmM2PPE7xyRMrxsVcW1UjtHZ2Hrpiykca673m3MhxbiYExTgW5xQCGGnRkQ6MNAO3yFZ1tnd1YZDHPBhWIBOcvLAGXWzC6Ovd6w1BoMHorYX2Ns1h+Yj/uYrCN5XcUi26mBbhhZ/7jYV/sz391BklFayu42Cb4mKXxgc/YzUhNuHgh8bEj/6mLPvEZoMtorTf9g8Ef7aYeOGxQ+uOvDbkYNT+cnbuXD4jXuuUAHtIoM2qz7vbNZsJNPIcsCWUdRllb1Y17bcT2aVJ4/dVrWiwzovW0pAY+RNh4EnwqN2pi5WVImZckIISNNFUni1utj20HvAQySukUYzSOwRF7WJsB3DtPUAa6l3b2QuDwkOGU3EaBSflNxZ/axY+2qHySbg+iouNxFmnkS8ajVYkYA3v1yEcT1DQcSTp1AVjHLtIDBMBxVoAfaXP8QrYsXiUijeSRgqIpdmPAKouSfYK563g2udpYKeU6M5k6PWGjk52NfAQsi37aiwpW71uaNuOY38hW67t4TZXoMhgyHEeiHnspLzLeL4QrG99b30A7BbgK512Tj+abXVTx7u8VYosdGRcSLw+VY2IsQR4XrSJbb8cYnYJa1lzAWyhsozAAaDXiBoDcDQVUd0gPTYr8Ltb9xre+1LbU2suUpGbk6EjgB3dpqFw8zI6upsykEHvFZvGYmHTQvGnqVvPaYn7OhNmrgocKJ5Ms07EhYWJCrZrdIDu1uePVS0cmBxMMhdEwsyAlMhOVwBe2U6E30sNazvZG88EyjMwjfrVjYX+ax0I99ONobwYeJSTIrHqVCGJ8uHtr53zRO3a/Y/896zretPXOc9PbHT6Yyq3KDbn47ceb1/eNvvrpTk1VRsjBZLW9HjOnyit29ubNXJu1doNPK0rcTwHUAOAFalyO8p0eDj9CxpIhzExS2uI8xuUcDXITc3F7Enq4e/TrtrES/J8ZrV1te2pXpMrVtXDFdrelxwhZ4c7c2GX4boyp0Yi2fPqH6Is6kkdIENa+VUxPsTFliChiDKeotmUxkf3stLSbxbLMgxZ2jD0VKgDER5bG1xkvfUqp7bisd5YeUxMeoweDJ9HDBpJCCDKw9UKp1CA666k24W128xfkMlCpKT1zRr7SpAHnXQtYJyIbKLooPVKuIbuy6RqfHLIfYK3uoooooqoKit4tipiosp0cao3Yew9x66laKDkff3dZ8HiT0CqMTYW9VutR2r1gjq8KrJiPZXZ+29kQ4uB4J0DI6lT2i/xlPUw4g1y7vXuxNgMS+HlF7ao/VInU4+ojqNx30FUSSReDMPAkUuu0sQOE0o8JH/ABp2Yq+GKgRXbmLHDEz/AOK/40oN4sYP/VTf4j/jQYu6vnMjsoHWztqyyZo5ZXbNqCzsbm3A3NJSx5CR7f8AXlSIh6wNeIqc2Ni4DiYHxMeaJJFMq3Oq3F793Xbrtag6h3ZP9Sw37CL/AIa1JV5jIIBW1rC1uFuq3dTLbu14sJh3xExsiC/ex4BFHWxNgB30GfcuW8fNYZcDGenP0pLfFiU8P77C3gGrIthY1Yy0UhtHKACfkMPVk9lzfxB1y2o29tSTF4mTEy+vI17AkhRwVFv1AADv49dR5WgjNr7GlhmKMt73KlR0WXtXzGnVUcyEcQR4itE3Ix0UuITB4jpRyXEZ645ACVytxF+kumtyLW1rRcRupCgu+R1vbpRBmH7pU+0kms5x1bik26OdKK6H/wBksCf7OP8AwnH8RrwdzMD+qj8pB91N0L6N/DnuiugjuTgf1Mf+8/kr5/sRgf1MfnJ/JTdB6V/Dn6iuhF3LwH6qPykP8NexufgR/Zx/4ch+8U3Qelfw55VSeAp5gdkzzSJFFEzO5sqganv14AdZOgrf4d1MObiMItusQgEX7C7MP8tWndDdOCAmYLmc6Zjx0+vXgOA6gKRbPRJ05r+p95N90xs7BrGxzSt0pG11YgDS/wAUAADwvxJq218r7WmBRRRQFFFFAVAb5bqw7Rg5qTouuscgF2RvvU9Y6+42NT9FByzt7d2bCTNDOlmHAj1WHUynrFRTYeuqN4NgwYyLm50uOKsNHQ9qn7uB66xzejk+nwpLAc7F8tRqB89eI8dRQZs0FeeZqdfBUg2E7qCJ5mk2XKb9R41LHDV4fDXFrUGwckm/EZwbYfFSBWwy3VmPrQjh4lbhbDqy1S+UHe99oTWW64eMnm06yeHOP849Q6h4mqIVaNvqqQhmDC4oPBSms+IReJqQNNzhUvfKL0BhcSyIBHZNVfMETPdSGU5yM1gQDa9u6tV3a34XGyph5IcjkE5gwKEqpJsCLjr01rLClTu4mDmk2hDzEZdkcM9uCRnoszNwHRJt2mpMZapaazybN6OvZRzApWiueHszJLmB2UcwvZStFMGZJ8wK+cwKVopgzJzs3Zea7A2HDt4a/fVghjCqFHAaU32Ulol79fPh7rU7rpEYeXUtNpFFFFVzFFFFAUUUUBRRRQFFFFBXts7mYPEXJjyOfjx9E37Svqn2iqbtLkvlFzDKjjscFW8xcE+VanRQYTjdysZGTfDOe9AH+xc1C4nZTobPG6nsdWU+RFdIUUHMM+BBFjY1FT7JZTdDXVk2Ejf1o0b6Sg/WKbNsPCnjhoT/APFH+FByuTIPWU+z/rT/AGfsnFzm0OFnk71Q5fa9so9prp2DZcCG6QRKe1Y0H1CnlBiW7vJHiZSGxkiwJ1xxkNKRbgW9VP8ANWubC2Hh8HEIsPGEXibXLMflMx1Y95qRooILHbPcMSoup104jutTJkYcVI8QatVFZ2usaswqV6L1baKm1r1vZU1UngCfAGnMGz5HOqlR1k6e6rHRV2pOrL4q2AA6tK+0UVpxFFFFB//Z' },
+            { id: 3, name: 'แบตเตอรี่สำรอง', price: 850.00, description: 'ชาร์จอุปกรณ์ของคุณได้ทุกที่ทุกเวลา', image: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRomRzAOdeup7eE9CnYbKD7xFd4ju1GGEPAHNykiNwN55wM5qW2XyxzhTImWRheWpKwgBR6tKY4oltDaMEpWcqqhxegAr295wWxZVhXdnzvc_AEBox3vwc-1IwNqvewmAid5qec2A&usqp=CAc' }
+        ];
+
+        let cart = [];
+
+        function showView(viewId) {
+            document.querySelectorAll('.view-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(viewId).classList.add('active');
+
+            if (viewId === 'cart-view') {
+                updateCartDisplay();
+            } else if (viewId === 'checkout-view') {
+                updateCheckoutSummary();
+            }
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('product-container');
+            container.innerHTML = '';
+            products.forEach(product => {
+                const article = document.createElement('article');
+                article.id = `product-${product.id}`;
+                article.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" width="100" height="100" style="float:left; margin-right: 15px;">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p>ราคา: <strong>${product.price.toFixed(2)} บาท</strong></p>
+                        <button onclick="addToCart(${product.id})">เพิ่มลงตะกร้า</button>
+                    </div>
+                    <div style="clear:both;"></div>
+                `;
+                container.appendChild(article);
+            });
+        }
+
+        function addToCart(productId) {
+            const existingItem = cart.find(item => item.productId === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ productId: productId, quantity: 1 });
+            }
+            updateCartCount();
+            alert(`${products.find(p => p.id === productId).name} ถูกเพิ่มลงในตะกร้าแล้ว!`);
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+
+            document.getElementById('checkout-button').disabled = totalItems === 0;
+        }
+
+        function updateCartDisplay() {
+            const container = document.getElementById('cart-items-container');
+            const totalElement = document.getElementById('cart-total');
+            let total = 0;
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p id="empty-cart-message">ตะกร้าสินค้าว่างเปล่า</p>';
+                totalElement.textContent = '0.00';
+                return;
+            }
+
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.productId);
+                const itemTotal = product.price * item.quantity;
+                total += itemTotal;
+
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <span>${product.name} x ${item.quantity}</span>
+                    <span>${itemTotal.toFixed(2)} บาท</span>
+                `;
+                container.appendChild(div);
+            });
+
+            totalElement.textContent = total.toFixed(2);
+        }
+
+        function updateCheckoutSummary() {
+            const summaryContainer = document.getElementById('checkout-summary-container');
+            const total = cart.reduce((sum, item) => {
+                const product = products.find(p => p.id === item.productId);
+                return sum + (product.price * item.quantity);
+            }, 0);
+
+            summaryContainer.innerHTML = '';
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.productId);
+                const itemTotal = product.price * item.quantity;
+                summaryContainer.innerHTML += `<p>${product.name} x ${item.quantity}: ${itemTotal.toFixed(2)} บาท</p>`;
+            });
+            summaryContainer.innerHTML += `<hr><h3>ยอดรวมสุทธิ: ${total.toFixed(2)} บาท</h3>`;
+        }
+
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+            const orderNumber = Math.floor(Math.random() * 1000000);
+
+            document.getElementById('order-number').textContent = orderNumber;
+            showView('confirmation-view');
+
+            cart = [];
+            updateCartCount();
+            document.getElementById('checkout-form').reset();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartCount();
+            showView('product-list-view');
+        });
+    </script>
+
+</body>
+</html>

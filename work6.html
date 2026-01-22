@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile - ภูดิส เสียงหย่อง</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f3f2ef;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .profile-figure {
+            margin: 0;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 3px solid #e0e0e0;
+            object-fit: cover;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .profile-caption {
+            margin-top: 10px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        .bio {
+            flex: 1;
+            font-size: 1.1em;
+            color: #444;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            color: #000;
+            margin-bottom: 15px;
+            font-weight: 600;
+            border-bottom: 2px solid #0077b5;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .skills-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #0077b5;
+            border-radius: 4px;
+            font-size: 1.05em;
+        }
+
+        .connect-links {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .connect-links li {
+            margin: 0; 
+            padding: 0; 
+            background: none;
+            border: none; 
+        }
+
+        .connect-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background-color: #0077b5;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .connect-link:hover {
+            background-color: #005580;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ภูดิส เสียงหย่อง</h1>
+            <p>นักพัฒนาเว็บ | ผู้เรียนรู้อย่างต่อเนื่อง</p>
+        </header>
+
+        <main>
+            <section class="profile-section">
+                <figure class="profile-figure">
+                    <img src="https://private-us-east-1.manuscdn.com/sessionFile/D5cta09kCt6ivPCxAVKAH2/sandbox/RXODFiVKWLVFrTDbuucRdE_1767889282812_na1fn_L2hvbWUvdWJ1bnR1L3BpYw.jpg?x-oss-process=image/resize,w_4096,h_4096/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvRDVjdGEwOWtDdDZpdlBDeEFWS0FIMi9zYW5kYm94L1JYT0RGaVZLV0xWRnJURGJ1dWNSZEVfMTc2Nzg4OTI4MjgxMl9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDNCcFl3LmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzQwOTYsaF80MDk2L2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=cxG0hCrqyemV4bYBBSG6MO6OffxhSVLJXxeZ-VjXXG5OMUO8qrA1GaCDcT0xTKA9AA-8rNVZeIq~cGhgP~-2XCCGZbgcsSAcsC37-v4bEiLOgqa-JuB6AW3g-KNvs-vXlVd0RiphLxOIIOViGgyegit7ueiJriF~ILdx6cxwEtlM0r6Rf2ksggBl8KmPRKxkbQ0ezLAmleQA2ZEA7CrEUok~gCUbeUo7atvXxFwpVCHMFhYuYZMnU6wH8bSWwcgp8J8qu2y1EKo~L~b2mt7FDOex8gDo3M-IV-yj-bJ4gYC~gnG0kCFhuh2LX0hf2Utb9YZ7Lif2w-NHXpfa-96CpQ__" 
+                         alt="รูปโปรไฟล์ของ ภูดิส เสียงหย่อง" 
+                         class="profile-image">
+                    <figcaption class="profile-caption">ภูดิส เสียงหย่อง</figcaption>
+                </figure>
+
+                <div class="bio">
+                    <p>สวัสดีครับ ผมชื่อเบสท์ เป็นนักพัฒนาเว็บรุ่นใหม่ที่ตื่นเต้นกับการเรียนรู้ HTML ผมสนุกกับการสร้างหน้าเว็บที่เรียบง่ายและใช้งานได้จริง นี่คือหน้าโปรไฟล์ส่วนตัวหน้าแรกของผมที่สร้างขึ้นด้วย HTML พื้นฐานครับ</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interests & Skills</h2>
+                <ul class="skills-list">
+                    <li>Web Development</li>
+                    <li>UI/UX Design</li>
+                    <li>Graphic Design</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Connect with Me</h2>
+                <ul class="connect-links">
+                    <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="connect-link">instagram</a></li>
+                    <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="connect-link">GitHub</a></li>
+                    <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="connect-link">Twitter / X</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            © 2026 ภูดิส เสียงหย่อง — โปรไฟล์ส่วนตัวสร้างด้วย HTML เชิงความหมาย
+        </footer>
+    </div>
+</body>
+</html>

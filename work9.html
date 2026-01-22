@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โครงสร้างหน้าบทความแบบโต้ตอบ</title>
+    <style>
+
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background-color: #f4f4f4; padding: 10px 20px; border-bottom: 1px solid #ccc; }
+        header h1 { margin: 0; font-size: 1.5em; }
+        nav ul { list-style: none; padding: 0; margin: 0; }
+        nav li { display: inline; margin-right: 20px; }
+        nav a { cursor: pointer; text-decoration: none; color: #007bff; }
+        nav a:hover { text-decoration: underline; }
+
+        .category-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .category-button {
+            display: block;
+            padding: 15px 25px;
+            background-color: #007bff;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s;
+            flex-grow: 1;
+            min-width: 200px;
+        }
+        .category-button:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+        .main-container { display: flex; max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+        #main-content { flex: 3; padding-right: 20px; }
+        #sidebar { flex: 1; padding: 15px; background-color: #f9f9f9; border: 1px solid #eee; }
+        
+        footer { background-color: #333; color: white; text-align: center; padding: 10px 0; margin-top: 20px; }
+
+        .article-meta { font-style: italic; color: #555; margin-bottom: 20px; }
+        figure { margin: 20px 0; padding: 10px; border: 1px solid #ddd; text-align: center; }
+        figcaption { font-size: 0.9em; color: #777; margin-top: 5px; }
+
+        #sidebar ul { list-style: none; padding: 0; }
+        #sidebar li { margin-bottom: 5px; }
+        #sidebar a { cursor: pointer; color: #007bff; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SITE LOGO</h1>
+        <nav>
+            <ul>
+                <li><a onclick="loadContent('home')">หน้าแรก</a></li>
+                <li><a onclick="loadContent('categories')">หมวดหมู่</a></li>
+                <li><a onclick="loadContent('contact')">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+
+        <main id="main-content">
+
+        </main>
+
+        <aside id="sidebar">
+            <section>
+                <h2>บทความที่เกี่ยวข้อง</h2>
+                <ul id="related-articles-list">
+                    <li><a onclick="loadContent('html5')">ทำความเข้าใจ HTML5</a></li>
+                    <li><a onclick="loadContent('css-grid')">CSS Grid Layouts</a></li>
+                    <li><a onclick="loadContent('javascript')">พื้นฐาน JavaScript</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>โฆษณา</h2>
+                <p style="padding: 10px; border: 1px solid #ccc; text-align: center;">ADVERTISEMENT</p>
+            </section>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Your Website. All Rights Reserved.</p>
+        <nav>
+            <a href="/privacy">นโยบายความเป็นส่วนตัว</a> | 
+            <a href="/terms">ข้อกำหนดในการให้บริการ</a>
+        </nav>
+    </footer>
+
+    <script>
+
+        const pageContents = {
+            'home': {
+                title: 'หน้าแรก: ยินดีต้อนรับสู่เว็บไซต์ของเรา',
+                content: `
+                    <article>
+                        <h1>หน้าแรก: ยินดีต้อนรับสู่เว็บไซต์ของเรา</h1>
+                        <p>นี่คือหน้าแรกของเว็บไซต์ของเรา ที่คุณสามารถค้นหาบทความล่าสุดและข้อมูลที่น่าสนใจเกี่ยวกับเทคโนโลยีและการพัฒนาเว็บ</p>
+                        <p>เรามุ่งมั่นที่จะนำเสนอเนื้อหาที่มีคุณภาพและเป็นประโยชน์ต่อผู้อ่านทุกท่าน</p>
+                    </article>
+                `
+            },
+            'categories': {
+                title: 'หมวดหมู่บทความ',
+                content: `
+                    <article>
+                        <h1>หมวดหมู่บทความ</h1>
+                        <p>คุณสามารถเลือกดูบทความตามหมวดหมู่ที่สนใจได้:</p>
+                        <div class="category-container">
+                            <a class="category-button" onclick="loadContent('html5')">HTML & Semantic Web</a>
+                            <a class="category-button" onclick="loadContent('css-grid')">CSS & Design</a>
+                            <a class="category-button" onclick="loadContent('javascript')">JavaScript & Programming</a>
+                            <a class="category-button" onclick="loadContent('tools-tech')">เครื่องมือและเทคโนโลยี</a>
+                        </div>
+                    </article>
+                `
+            },
+            'contact': {
+                title: 'ติดต่อเรา',
+                content: `
+                    <article>
+                        <h1>ติดต่อเรา</h1>
+                        <p>หากมีข้อสงสัยหรือต้องการติดต่อสอบถาม สามารถติดต่อเราได้ตามช่องทางด้านล่าง:</p>
+                        <address>
+                            <p><strong>อีเมล:</strong> <a href="mailto:info@website.com">info@website.com</a></p>
+                            <p><strong>โทรศัพท์:</strong> 02-999-9999</p>
+                            <p><strong>ที่อยู่:</strong> 123 ถนนแห่งความรู้, กรุงเทพฯ</p>
+                        </address>
+                    </article>
+                `
+            },
+            'html5': {
+                title: 'ทำความเข้าใจ HTML5',
+                content: `
+                    <article>
+                        <h1>ทำความเข้าใจ HTML5 และ Semantic Tags</h1>
+                        <section class="article-meta">
+                            <address>โดย: ผู้เชี่ยวชาญ HTML</address>
+                            <p>เผยแพร่เมื่อ: 10 มกราคม 2568</p>
+                        </section>
+                        <p>HTML5 คือมาตรฐานล่าสุดของ HTML ที่นำเสนอแท็กเชิงความหมายใหม่ๆ มากมาย เช่น &lt;header&gt;, &lt;footer&gt;, &lt;article&gt;, &lt;section&gt; และ &lt;nav&gt; ซึ่งช่วยให้โครงสร้างของเว็บเพจมีความหมายชัดเจนยิ่งขึ้น</p>
+                        <figure>
+                            <img src="data:image/jpeg;base64,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" alt="โลโก้ HTML5" width="400" height="200">
+                            <figcaption>โลโก้ HTML5 แสดงถึงมาตรฐานใหม่</figcaption>
+                        </figure>
+                        <p>การใช้แท็กเหล่านี้ไม่เพียงแต่ช่วยให้ Search Engine เข้าใจเนื้อหาได้ดีขึ้นเท่านั้น แต่ยังช่วยปรับปรุงการเข้าถึง (Accessibility) สำหรับผู้ใช้ที่ใช้โปรแกรมอ่านหน้าจออีกด้วย</p>
+                    </article>
+                `
+            },
+            'css-grid': {
+                title: 'CSS Grid Layouts',
+                content: `
+                    <article>
+                        <h1>CSS Grid Layouts: การจัดวางที่ทรงพลัง</h1>
+                        <section class="article-meta">
+                            <address>โดย: นักออกแบบเว็บ</address>
+                            <p>เผยแพร่เมื่อ: 15 กุมภาพันธ์ 2568</p>
+                        </section>
+                        <p>CSS Grid Layout เป็นระบบการจัดวางแบบ 2 มิติที่ช่วยให้เราสามารถออกแบบโครงสร้างหน้าเว็บที่ซับซ้อนได้อย่างง่ายดายและมีประสิทธิภาพ</p>
+                        <figure>
+                            <img src="https://via.placeholder.com/400x200/800080/FFFFFF?text=CSS+Grid+Diagram" alt="แผนภาพ CSS Grid" width="400" height="200">
+                            <figcaption>ตัวอย่างการจัดวางด้วย CSS Grid</figcaption>
+                        </figure>
+                        <p>คุณสมบัติหลักของ Grid คือการควบคุมทั้งแถว (rows) และคอลัมน์ (columns) ในเวลาเดียวกัน ทำให้การสร้าง Layout ที่ตอบสนองต่ออุปกรณ์ต่างๆ (Responsive Design) เป็นเรื่องง่ายขึ้นมาก</p>
+                    </article>
+                `
+            },
+            'javascript': {
+                title: 'พื้นฐาน JavaScript',
+                content: `
+                    <article>
+                        <h1>พื้นฐาน JavaScript สำหรับนักพัฒนาเว็บ</h1>
+                        <section class="article-meta">
+                            <address>โดย: ผู้เชี่ยวชาญด้านโค้ด</address>
+                            <p>เผยแพร่เมื่อ: 20 มีนาคม 2568</p>
+                        </section>
+                        <p>JavaScript เป็นภาษาโปรแกรมที่จำเป็นสำหรับการพัฒนาเว็บสมัยใหม่ ใช้เพื่อเพิ่มการโต้ตอบ (Interactivity) ให้กับหน้าเว็บ เช่น การจัดการเหตุการณ์ (Event Handling) และการจัดการ DOM</p>
+                        <p>หัวข้อสำคัญที่ควรเรียนรู้:</p>
+                        <ul>
+                            <li>Variables and Data Types</li>
+                            <li>Functions and Scope</li>
+                            <li>DOM Manipulation</li>
+                            <li>Asynchronous Programming (Promises, Async/Await)</li>
+                        </ul>
+                        <p>การเรียนรู้ JavaScript จะช่วยให้คุณสามารถสร้างเว็บแอปพลิเคชันที่ซับซ้อนและมีประสิทธิภาพได้</p>
+                    </article>
+                `
+            },
+            'tools-tech': {
+                title: 'เครื่องมือและเทคโนโลยีสำหรับนักพัฒนาเว็บ',
+                content: `
+                    <article>
+                        <h1>เครื่องมือและเทคโนโลยีที่น่าสนใจ</h1>
+                        <section class="article-meta">
+                            <address>โดย: ทีมบรรณาธิการ</address>
+                            <p>เผยแพร่เมื่อ: 10 พฤษภาคม 2568</p>
+                        </section>
+                        <p>ในโลกของการพัฒนาเว็บที่เปลี่ยนแปลงอย่างรวดเร็ว การเลือกใช้เครื่องมือที่เหมาะสมเป็นสิ่งสำคัญอย่างยิ่ง นี่คือเครื่องมือและเทคโนโลยีบางส่วนที่ได้รับความนิยมในปัจจุบัน:</p>
+                        <h2>เครื่องมือยอดนิยม</h2>
+                        <ul>
+                            <li>**React/Vue/Angular:** Frameworks สำหรับการสร้าง User Interface ที่ซับซ้อน</li>
+                            <li>**Node.js & Express:** สำหรับการพัฒนา Backend และ API ที่มีประสิทธิภาพ</li>
+                            <li>**VS Code:** Code Editor ที่ได้รับความนิยมสูงสุดในหมู่นักพัฒนา</li>
+                            <li>**Git & GitHub:** ระบบควบคุมเวอร์ชันและการทำงานร่วมกัน</li>
+                        </ul>
+                        <figure>
+                            <img src="https://via.placeholder.com/400x200/FFA500/FFFFFF?text=Web+Tools" alt="ภาพรวมเครื่องมือพัฒนาเว็บ" width="400" height="200">
+                            <figcaption>ภาพรวมเครื่องมือและเทคโนโลยีในการพัฒนาเว็บ</figcaption>
+                        </figure>
+                        <p>การเรียนรู้และปรับตัวเข้ากับเครื่องมือเหล่านี้จะช่วยเพิ่มประสิทธิภาพในการทำงานของคุณได้อย่างมาก</p>
+                    </article>
+                `
+            }
+        };
+
+        function loadContent(pageId) {
+            const mainContent = document.getElementById('main-content');
+            const contentData = pageContents[pageId];
+
+            if (contentData) {
+
+                document.title = contentData.title + " | โครงสร้างหน้าบทความแบบโต้ตอบ";
+
+                mainContent.innerHTML = contentData.content;
+
+                window.scrollTo(0, 0);
+            } else {
+                mainContent.innerHTML = `
+                    <article>
+                        <h1>ไม่พบเนื้อหา</h1>
+                        <p>ขออภัย ไม่พบเนื้อหาสำหรับหน้านี้</p>
+                    </article>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadContent('html5'); 
+        });
+    </script>
+
+</body>
+</html>
