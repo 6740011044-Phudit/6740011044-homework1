@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phudit - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+        h2 {
+            margin-top: 1.5rem;
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #ecf0f1;
+        }
+        .project-list, .exercise-list {
+            margin-top: 1rem;
+        }
+        .project-list li, .exercise-list li {
+            margin-bottom: 12px;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 800px; margin: auto; padding: 1rem;">
+
+        <div style="flex: 1; text-align: left;">
+            <h1 style="margin: 0; font-size: 2.5rem; color: white;">Hi,<br>I am <span style="color: #3498db;">Phudit</span><br>and I'm an IT student</h1>
+            <p style="margin: 0.5rem 0 1rem 0; color: #ecf0f1; font-size: 0.9rem;">PSU Surat Thani</p>
+            <a href="#contact" style="display: inline-block; background: #3498db; color: white; padding: 0.75rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold;">Contact Me</a>
+        </div>
+
+        <div style="flex: 0 0 auto; margin-left: 2rem;">
+            <img src="https://private-us-east-1.manuscdn.com/sessionFile/D5cta09kCt6ivPCxAVKAH2/sandbox/RXODFiVKWLVFrTDbuucRdE_1767889282812_na1fn_L2hvbWUvdWJ1bnR1L3BpYw.jpg?x-oss-process=image/resize,w_4096,h_4096/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvRDVjdGEwOWtDdDZpdlBDeEFWS0FIMi9zYW5kYm94L1JYT0RGaVZLV0xWRnJURGJ1dWNSZEVfMTc2Nzg4OTI4MjgxMl9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDNCcFl3LmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzQwOTYsaF80MDk2L2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=cxG0hCrqyemV4bYBBSG6MO6OffxhSVLJXxeZ-VjXXG5OMUO8qrA1GaCDcT0xTKA9AA-8rNVZeIq~cGhgP~-2XCCGZbgcsSAcsC37-v4bEiLOgqa-JuB6AW3g-KNvs-vXlVd0RiphLxOIIOViGgyegit7ueiJriF~ILdx6cxwEtlM0r6Rf2ksggBl8KmPRKxkbQ0ezLAmleQA2ZEA7CrEUok~gCUbeUo7atvXxFwpVCHMFhYuYZMnU6wH8bSWwcgp8J8qu2y1EKo~L~b2mt7FDOex8gDo3M-IV-yj-bJ4gYC~gnG0kCFhuh2LX0hf2Utb9YZ7Lif2w-NHXpfa-96CpQ__" alt="Phudit's Profile" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+        </div>
+    </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#exercises">Exercises</a></li> 
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>
+            ผมชื่อ <strong>ภูดิส เสียงหย่อง</strong> อายุ 20 ปี เป็นนักศึกษาชั้นปีที่ 2 สาขาเทคโนโลยีสารสนเทศ 
+            คณะวิทยาศาสตร์และเทคโนโลยีอุตสาหกรรม มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตสุราษฎร์ธานี
+        </p>
+        <p>
+            สนใจด้าน eSports โดยเฉพาะเกม <strong>ROV (Realm of Valor)</strong> 
+            และได้รับคัดเลือกเป็นหนึ่งใน <strong>5,000 คน</strong> ทั่วประเทศ 
+            ในโครงการ <strong>TRUE 5G TASTER</strong> ให้ทำหน้าที่เป็น <strong>Young Master</strong>
+        </p>
+
+        <h3>Education</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>University Education</th>
+                    <th>Degree</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2024–Present</td>
+                    <td>Prince of Songkla University, Surat Thani Campus</td>
+                    <td>Bachelor's Degree in Information Technology</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="work">
+        <h2>Work</h2>
+        <ul class="project-list">
+            <li><strong>TRUE 5G TASTER – Young Master</strong> (2025)<br>
+                ร่วมทดสอบเครือข่าย 5G สำหรับการเล่น ROV และสร้างคอนเทนต์เกี่ยวกับประสบการณ์ผู้ใช้</li>
+            <li><strong>ROV Campus Tournament Organizer</strong> (2024)<br>
+                จัดการแข่งขัน ROV ภายในมหาวิทยาลัย พร้อมออกแบบระบบลงทะเบียนออนไลน์</li>
+        </ul>
+    </section>
+
+    <section id="exercises">
+        <h2>Exercises</h2>
+        <ul class="exercise-list">
+            <li><a href="work2.html">Exercises 1</a></li>
+            <li><a href="work3.html">Exercises 2</a></li>
+            <li><a href="work4.html">Exercises 3</a></li>
+            <li><a href="work5.html">Exercises 4</a></li>
+            <li><a href="work6.html">Exercises 5</a></li>
+            <li><a href="work7.html">Exercises 6</a></li>
+            <li><a href="work8.html">Exercises 7</a></li>
+            <li><a href="work10.html">Exercises 8</a></li>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <p>ทักษะที่ใช้ทั้งในการเรียน งานพัฒนา และกิจกรรม eSports:</p>
+        <ul class="skills-list">
+            <li class="skill-item">
+                <div class="skill-header"><span>HTML5 & CSS3</span><span>80%</span></div>
+                <div class="progress-bar"><div class="progress" style="width:80%;"></div></div>
+            </li>
+            <li class="skill-item">
+                <div class="skill-header"><span>JavaScript</span><span>75%</span></div>
+                <div class="progress-bar"><div class="progress" style="width:75%;"></div></div>
+            </li>
+            <li class="skill-item">
+                <div class="skill-header"><span>UX/UI Design for Gamers</span><span>75%</span></div>
+                <div class="progress-bar"><div class="progress" style="width:70%;"></div></div>
+            </li>
+            <li class="skill-item">
+                <div class="skill-header"><span>Content Creation (IG, TikTok)</span><span>85%</span></div>
+                <div class="progress-bar"><div class="progress" style="width:85%;"></div></div>
+            </li>
+            <li class="skill-item">
+                <div class="skill-header"><span>ROV Strategy & Gameplay</span><span>99%</span></div>
+                <div class="progress-bar"><div class="progress" style="width:99%;"></div></div>
+            </li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>สนใจติดต่อหรือชวนแข่ง ROV? ส่งข้อความมาได้เลย!</p>
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" placeholder="Your Name"><br><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="email@example.com"><br><br>
+            
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" placeholder="เช่น ชวนแข่ง ROV, ร่วมแคมเปญ ฯลฯ"></textarea><br><br>
+            
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Phudit Siangyong. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
