@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรไฟล์ส่วนตัวของฉัน</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .profile-image {
+            flex-shrink: 0;
+        }
+        
+        .profile-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .profile-intro {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        h1 {
+            color: #1a1a1a;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .intro-text {
+            color: #555;
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #1a1a1a;
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .interests-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .interests-list li {
+            color: #555;
+            font-size: 1.1em;
+            margin: 12px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .interests-list li:before {
+            content: "★";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+        
+        .connect-section {
+            margin-top: 30px;
+        }
+        
+        .links-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .links-list li {
+            margin: 12px 0;
+        }
+        
+        .links-list a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+        }
+        
+        .links-list a:hover {
+            color: #764ba2;
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .links-list a:before {
+            content: "→";
+            font-weight: bold;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .profile-intro {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-image">
+                <img src="https://private-us-east-1.manuscdn.com/sessionFile/D5cta09kCt6ivPCxAVKAH2/sandbox/RXODFiVKWLVFrTDbuucRdE_1767889282812_na1fn_L2hvbWUvdWJ1bnR1L3BpYw.jpg?x-oss-process=image/resize,w_4096,h_4096/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvRDVjdGEwOWtDdDZpdlBDeEFWS0FIMi9zYW5kYm94L1JYT0RGaVZLV0xWRnJURGJ1dWNSZEVfMTc2Nzg4OTI4MjgxMl9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDNCcFl3LmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzQwOTYsaF80MDk2L2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=cxG0hCrqyemV4bYBBSG6MO6OffxhSVLJXxeZ-VjXXG5OMUO8qrA1GaCDcT0xTKA9AA-8rNVZeIq~cGhgP~-2XCCGZbgcsSAcsC37-v4bEiLOgqa-JuB6AW3g-KNvs-vXlVd0RiphLxOIIOViGgyegit7ueiJriF~ILdx6cxwEtlM0r6Rf2ksggBl8KmPRKxkbQ0ezLAmleQA2ZEA7CrEUok~gCUbeUo7atvXxFwpVCHMFhYuYZMnU6wH8bSWwcgp8J8qu2y1EKo~L~b2mt7FDOex8gDo3M-IV-yj-bJ4gYC~gnG0kCFhuh2LX0hf2Utb9YZ7Lif2w-NHXpfa-96CpQ__" alt="รูปโปรไฟล์ส่วนตัว">
+            </div>
+            <div class="profile-intro">
+                <h1>สวัสดี ผมชื่อ ภูดิส เสียงหย่อง</h1>
+                <p class="intro-text">ยินดีต้อนรับสู่มุมส่วนตัวของผมบนอินเทอร์เน็ต ผมเป็นนักพัฒนาเว็บที่มีความหลงใหลในการเรียนรู้ HTML, CSS และ JavaScript ผมชอบสร้างหน้าเว็บอย่างง่ายๆ และสำรวจเทคโนโลยีใหม่ๆ ในโลกดิจิทัล</p>
+            </div>
+        </div>
+
+        <h2>ความสนใจของผม</h2>
+        <ul class="interests-list">
+            <li>การพัฒนาเว็บไซต์ (Web Development)</li>
+            <li>การออกแบบส่วนต่อประสานผู้ใช้ (UI/UX Design)</li>
+            <li>การอ่านหนังสือทำอาหาร (Reading cooking books)</li>
+            <li>การเล่นเกมส์แนวต่างๆ (Playing various types of games)</li>
+            <li>การเล่นกีตาร์ (Playing Guitar)</li>
+        </ul>
+
+        <h2>ติดต่อฉัน</h2>
+        <ul class="links-list">
+            <li><a href="https://github.com" target="_blank">ดูโปรไฟล์ GitHub ของฉัน</a></li>
+            <li><a href="https://www.linkedin.com" target="_blank">เยี่ยมชมโปรไฟล์ LinkedIn</a></li>
+            <li><a href="https://twitter.com" target="_blank">ติดตามฉันบน Twitter</a></li>
+            <li><a href="mailto:example@email.com">ส่งอีเมลให้ฉัน</a></li>
+        </ul>
+    </div>
+</body>
+</html>
